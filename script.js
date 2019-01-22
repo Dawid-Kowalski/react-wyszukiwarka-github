@@ -3,15 +3,15 @@ class App extends React.Component {
 		super();
 		this.state = {
 			searchText: '',
-			users: [],
+			users: []
 		}
 	}
 
-	onChangeHandle = event => {
+	onChangeHandle (event) {
 		this.setState({searchText : event.target.value});
 	}
 
-	onSubmit = event => {
+	onSubmit (event) {
 		event.preventDefault();
 		const {searchText} = this.state;
 		const url = `https://api.github.com/search/users?q=${searchText}`;
@@ -23,6 +23,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
+				<form onSubmit={this.onSubmit}>
+					<label>Wuszukaj uzytkownika</label>
+					<input type="text" onChange={this.onChange} value={this.state.searchText}/>
+				</form>
 			</div>
 		)
 	}
